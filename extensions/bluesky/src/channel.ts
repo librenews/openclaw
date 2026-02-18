@@ -166,7 +166,6 @@ export const blueskyPlugin: ChannelPlugin<ResolvedBlueskyAccount> = {
     collectStatusIssues: (accounts) => collectStatusIssuesFromLastError("bluesky", accounts),
     buildChannelSummary: ({ snapshot }) => ({
       configured: snapshot.configured ?? false,
-      identifier: snapshot.identifier ?? null,
       running: snapshot.running ?? false,
       lastStartAt: snapshot.lastStartAt ?? null,
       lastStopAt: snapshot.lastStopAt ?? null,
@@ -177,7 +176,6 @@ export const blueskyPlugin: ChannelPlugin<ResolvedBlueskyAccount> = {
       name: account.name,
       enabled: account.enabled,
       configured: account.configured,
-      identifier: account.identifier,
       running: runtime?.running ?? false,
       lastStartAt: runtime?.lastStartAt ?? null,
       lastStopAt: runtime?.lastStopAt ?? null,
@@ -192,7 +190,6 @@ export const blueskyPlugin: ChannelPlugin<ResolvedBlueskyAccount> = {
       const account = ctx.account;
       ctx.setStatus({
         accountId: account.accountId,
-        identifier: account.identifier,
       });
       ctx.log?.info(
         `[${account.accountId}] starting Bluesky provider (identifier: ${account.identifier})`,
